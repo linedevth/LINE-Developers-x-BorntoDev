@@ -7,6 +7,19 @@ yarn-error.log*
 lerna-debug.log*
 .pnpm-debug.log*
 
+firebase-debug.log*
+firebase-debug.*.log*
+**/firebase-debug.log
+**/ui-debug.log
+**/database-debug.log
+**/pubsub-debug.log
+
+# Firebase cache
+**/.firebase
+
+# Firebase config
+**/.firebaserc
+
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
@@ -74,8 +87,10 @@ web_modules/
 
 # dotenv environment variable files
 .env
+.env.dev
 .env.development.local
 .env.test.local
+.env.prod
 .env.production.local
 .env.local
 
@@ -128,3 +143,13 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+.idea
+**/.runtimeconfig.json
+**/package-lock.json
+**/tsconfig-compile.json
+service-account.json
+service-account-credentials.json
+
+.DS_Store
+Thumbs.db
