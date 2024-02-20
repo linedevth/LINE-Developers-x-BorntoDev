@@ -12,8 +12,6 @@ const CACHE_IMAGE = "image_";
 const CACHE_CHAT = "chat_";
 
 exports.webhook = onRequest(async (req, res) => {
-  if (req.method !== "POST") { return res.send(req.method); }
-
   const events = req.body.events;
   for (const event of events) {
     const userId = event.source.userId;
