@@ -1,7 +1,7 @@
 const {onRequest} = require("firebase-functions/v2/https");
 const utils = require("./utils");
 
-// 1. sudo npm install axios/openai & create .env file
+// 1. sudo npm install & create .env file
 
 exports.webhook = onRequest(async (req, res) => {
     const events = req.body.events;
