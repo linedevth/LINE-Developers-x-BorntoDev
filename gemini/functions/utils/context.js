@@ -60,6 +60,6 @@ const lct23_csv = "ดร.พิเชษฐ์ ฤกษ์ปรีชา, 10:
 "ดาริน สุทธพงษ์, 14:30 - 15:00, Customer-Centricity Unleashed - Transforming Businesses with LINE Tech," +
 "พงศกร ธีรภาพวงศ์, 15:00 - 15:30, Digital Dining Journey with LINE at Bar B Q Plaza," +
 "ภมร ไตรวรรัตน์, 15:30 - 16:00, Elevate Your Video Broadcasts with Video Viewing Complete Event," +
-"จิรวัฒน์ กรัณย์วิทยาการ, 16:00 - 16:30, Live Coding - LON From Zero To Hero"
+"จิรวัฒน์ กรัณย์วิทยาการ, 16:00 - 16:30, Live Coding - LON From Zero To Hero";
 
 module.exports = { lct23_json, lct23_csv };
