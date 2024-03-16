@@ -12,7 +12,7 @@ class LINE {
       headers: LINE_HEADER,
       url: `https://api-data.line.me/v2/bot/message/${messageId}/content`,
       responseType: "arraybuffer"
-    })
+    });
     return originalImage.data;
   }
   
