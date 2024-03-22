@@ -41,6 +41,7 @@ exports.webhook = onRequest(async (req, res) => {
           // 4.3. Send a prompt to Gemini
           // 4.4. Reply a generated text
           // 4.5. Push a new chat history
+          // Note: From Mar 2024, the spec of parts value has changed to [{ text: xxx }]
           // 4.6. Set a cache chat history
           break;
         }
