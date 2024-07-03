@@ -16,7 +16,7 @@
     "axios": "^1.7.2",
     "firebase-admin": "^12.2.0",
     "firebase-functions": "^5.0.1",
-    "openai": "^4.52.2"
+    "openai": "^4.52.3"
   },
   "devDependencies": {
     "firebase-functions-test": "^3.3.0"
