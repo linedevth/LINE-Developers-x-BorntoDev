@@ -4,13 +4,15 @@ const context = require("./context");
 
 class Gemini {
   async textOnly(prompt) {
-    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+    // Note: From Nov 2024, the model has changed to gemini-1.5-flash-8b for mutimodal compatible
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash-8b" });
     const result = await model.generateContent(prompt);
     return result.response.text();
   }
 
   async textOnlyWithContext(prompt) {
-    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+    // Note: From Nov 2024, the model has changed to gemini-1.5-flash-8b for mutimodal compatible
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash-8b" });
     const parts = [{
         text: "ตอบคำถามโดยอ้างอิง Conference นี้เท่านั้น\n" + JSON.stringify(context.lct23_json)
     }];
@@ -19,7 +21,8 @@ class Gemini {
   }
 
   async multimodal(prompt, base64Image) {
-    const model = genAI.getGenerativeModel({ model: "gemini-pro-vision" });
+    // Note: From Nov 2024, the model has changed to gemini-1.5-flash-8b for mutimodal compatible
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash-8b" });
     const mimeType = "image/png";
     const imageParts = [{
       inlineData: { data: base64Image, mimeType }
@@ -29,7 +32,8 @@ class Gemini {
   }
 
   async chat(cacheChatHistory, prompt) {
-    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+    // Note: From Nov 2024, the model has changed to gemini-1.5-flash-8b for mutimodal compatible
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash-8b" });
     const chatHistory = [
       {
         role: "user",
