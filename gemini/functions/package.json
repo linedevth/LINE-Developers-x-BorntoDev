@@ -15,8 +15,8 @@
   "dependencies": {
     "@google/generative-ai": "^0.21.0",
     "axios": "^1.7.9",
-    "firebase-admin": "^13.0.1",
-    "firebase-functions": "^6.1.1",
+    "firebase-admin": "^13.0.2",
+    "firebase-functions": "^6.3.1",
     "node-cache": "^5.1.2"
   },
   "devDependencies": {
