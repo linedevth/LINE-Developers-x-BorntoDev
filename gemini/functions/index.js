@@ -15,12 +15,12 @@ exports.webhook = onRequest(async (req, res) => {
   const events = req.body.events;
   for (const event of events) {
     const userId = event.source.userId;
-    
+
     switch (event.type) {
       case "message":
         if (event.message.type === "text") {
           const prompt = event.message.text;
-          
+
           /* 3. Generate text from text-and-image input (multimodal) */
           // 3.5. Get cache image
           // 3.6. Check available cache
@@ -40,8 +40,10 @@ exports.webhook = onRequest(async (req, res) => {
           // 4.2. Check available cache
           // 4.3. Send a prompt to Gemini
           // 4.4. Reply a generated text
+          
           // 4.5. Push a new chat history
           // Note: From Mar 2024, the spec of parts value has changed to [{ text: xxx }]
+          
           // 4.6. Set a cache chat history
           break;
         }

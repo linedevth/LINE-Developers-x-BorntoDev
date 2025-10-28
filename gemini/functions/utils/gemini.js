@@ -1,39 +1,46 @@
-const { GoogleGenerativeAI } = require("@google/generative-ai");
-const genAI = new GoogleGenerativeAI(process.env.API_KEY);
+// Due to @google/generative-ai is deprecated, we will change it to @google/genai
+const { GoogleGenAI } = require("@google/genai");
+const ai = new GoogleGenAI({ apiKey: `${process.env.API_KEY}` });
+
 const context = require("./context");
 
 class Gemini {
   async textOnly(prompt) {
-    // Note: From Nov 2024, the model has changed to gemini-1.5-flash-8b for mutimodal compatible
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash-8b" });
-    const result = await model.generateContent(prompt);
-    return result.response.text();
+    // Due to @google/generative-ai is deprecated, we will change it to @google/genai
+    const response = await ai.models.generateContent({
+      model: "gemini-2.5-flash",
+      contents: prompt,
+    });
+    return response.text;
   }
 
   async textOnlyWithContext(prompt) {
-    // Note: From Nov 2024, the model has changed to gemini-1.5-flash-8b for mutimodal compatible
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash-8b" });
+    // Due to @google/generative-ai is deprecated, we will change it to @google/genai
     const parts = [{
-        text: "ตอบคำถามโดยอ้างอิง Conference นี้เท่านั้น\n" + JSON.stringify(context.lct23_json)
+      text: "ตอบคำถามโดยอ้างอิง Conference นี้เท่านั้น\n" + JSON.stringify(context.lct23_json)
     }];
-    const result = await model.generateContent([prompt, ...parts]);
-    return result.response.text();
+    const response = await ai.models.generateContent({
+      model: "gemini-2.5-flash",
+      contents: [prompt, ...parts],
+    });
+    return response.text;
   }
 
   async multimodal(prompt, base64Image) {
-    // Note: From Nov 2024, the model has changed to gemini-1.5-flash-8b for mutimodal compatible
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash-8b" });
-    const mimeType = "image/png";
-    const imageParts = [{
-      inlineData: { data: base64Image, mimeType }
-    }];
-    const result = await model.generateContent([prompt, ...imageParts]);
-    return result.response.text();
+    // Due to @google/generative-ai is deprecated, we will change it to @google/genai
+    const contents = [
+      { inlineData: { data: base64Image, mimeType: "image/png" } },
+      { text: `${prompt}` }
+    ];
+    const response = await ai.models.generateContent({
+      model: "gemini-2.5-flash",
+      contents: contents
+    });
+    return response.text;
   }
 
   async chat(cacheChatHistory, prompt) {
-    // Note: From Nov 2024, the model has changed to gemini-1.5-flash-8b for mutimodal compatible
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash-8b" });
+    // Due to @google/generative-ai is deprecated, we will change it to @google/genai
     const chatHistory = [
       {
         role: "user",
@@ -47,9 +54,12 @@ class Gemini {
     if (cacheChatHistory.length > 0) {
       chatHistory.push(...cacheChatHistory);
     }
-    const chat = model.startChat({ history: chatHistory });
-    const result = await chat.sendMessage(prompt);
-    return result.response.text();
+    const chat = ai.chats.create({
+      model: "gemini-2.5-flash",
+      history: chatHistory
+    });
+    const response = await chat.sendMessage({ message: prompt });
+    return response.text;
   }
 }
 
