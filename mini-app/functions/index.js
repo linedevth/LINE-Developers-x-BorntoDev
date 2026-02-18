@@ -19,6 +19,4 @@ exports.serviceMessage = onRequest({ cors: "*" }, async (req, res) => {
   /* 4. Issue a service notification token */
 
   /* 5. Send a service message */
-  
-  res.json(response);
 });
